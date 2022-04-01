@@ -30,3 +30,6 @@ def find_pet_by_name(shop, pet_name):
         if pet["name"] == pet_name:
             return pet
 
+def remove_pet_by_name(shop, pet_name):
+    pet_to_remove = find_pet_by_name(shop, pet_name)
+    shop["pets"].remove(pet_to_remove)
