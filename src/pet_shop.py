@@ -51,3 +51,13 @@ def add_pet_to_customer(customer, pet_data):
 
 def customer_can_afford_pet(customer, pet_data):
     return True if customer["cash"] >= pet_data["price"] else False
+
+def sell_pet_to_customer(shop, pet_data, customer):
+    if pet_data in shop["pets"]:
+        pet_price = pet_data["price"]
+        if customer_can_afford_pet(customer, pet_data):
+            increase_pets_sold(shop, 1)
+            add_pet_to_customer(customer, pet_data)
+            remove_pet_by_name(shop, pet_data["name"])
+            add_or_remove_cash(shop, pet_price)
+            remove_customer_cash(customer, pet_price)
